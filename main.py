@@ -51,6 +51,14 @@ def cmmmc(m, n):
 
 
 def get_cmmmc(list):
+    """Functia face cmmmc a unui sir de numere dat
+
+    Args:
+        list ([int]): [un sir de numere dat]
+
+    Returns:
+        [int]: [cmmmc al sirului]
+    """
     min_mul = 1
     for i in list:
         min_mul = cmmmc(min_mul, i)
