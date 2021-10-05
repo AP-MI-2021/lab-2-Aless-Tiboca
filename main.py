@@ -1,6 +1,5 @@
-
+from math import sqrt
 def get_temp(temp, tip, convers):
-
     """Functia face conversia din diferite baze de temperatura (C, F, K)
 
     Args:
@@ -74,8 +73,33 @@ def test_get_cmmmc():
     assert get_cmmmc(list3) == 16
 
 
+def get_largest_prime_below(n):
+    """Functia gaseste ultimul număr prim mai mic decât un număr dat.
+
+    Args:
+        n ([int]): [un numar dat]
+
+    Returns:
+        [int]: [cel mai mare nr numar prim mai mic decat n]
+    """
+    for i in range(n-1, 1, -1):
+        ok =  True
+        for j in range(2, int(sqrt(i))+1):
+            if i%j == 0:
+                ok = False
+        if ok:
+            return i
+def test_get_largest_prime_below():
+    
+    assert get_largest_prime_below(45) == 43
+    assert get_largest_prime_below(3) == 2
+    assert get_largest_prime_below(9) == 7
+
+
+
 def main ():
     
+    test_get_largest_prime_below()
     test_get_cmmmc()
     test_get_temp()
 
@@ -84,6 +108,7 @@ def main ():
             Alegeti:
             1. Faceti conversia intre doua scari de temperatura.
             2. Cmmmc dintre n numere.
+            3. Afisati cel mai mare nr. prim mai mic decat n.
             x. Iesire.
                 """)
         a = input("Introduceti o optiune: ")
@@ -99,7 +124,10 @@ def main ():
             for i in range(nr):
                 aux = int(input())
                 list.append(aux)
-            print("Cmmmc al elementelor listei este: " + str(get_cmmmc(list)))    
+            print("Cmmmc al elementelor listei este: " + str(get_cmmmc(list)))  
+        elif a == '3':
+            n = int(input("Dati un nr. n: "))    
+            print("Cel mai mare nr. prim mai mic decat n este: " + str(get_largest_prime_below(n)))  
         elif a == 'x':
             break 
         else:
